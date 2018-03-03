@@ -214,12 +214,16 @@ wget -O - https://github.com/nvie/vimrc/raw/master/autoinstall.sh | sh
 ## 安装插件
 
 ConvetToUTF8
-MarkdownEditing
-JsFormat
-Material-Theme
-Git
-Anoconda
 
+MarkdownEditing
+
+JsFormat
+
+Material-Theme
+
+Git
+
+Anoconda
 
 ## 我的配置
 
@@ -249,7 +253,60 @@ Anoconda
 ```
 
 # 设置ruby源
+```
+gem update --system # 这里请翻墙一下
+gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/
+bundle config mirror.https://rubygems.org https://gems.ruby-china.org
+
+# 查看
+
+gem sources -l
+bundle config --list
+```
+
+# 设置pip源
+```
+mkdir ~/.pip
+touch ~/.pip/pip.conf
+```
+文件的内容为：
+
+```
+[global]
+timeout = 60
+index-url = https://pypi.doubanio.com/simple
+```
+
 # 设置node源
 # 设置squirrel五笔输入法
-# 设置git
+# 设置全局gitignore
+```
+# Folder view configuration files
+.DS_Store
+Desktop.ini
+
+# Thumbnail cache files
+._*
+Thumbs.db
+
+# Files that might appear on external disks
+.Spotlight-V100
+.Trashes
+
+# Compiled Python files
+*.pyc
+
+# Compiled C++ files
+*.out
+
+# Application specific files
+venv
+node_modules
+.sass-cache
+*/targets/
+*.class
+.gitignore
+
+```
+
 
