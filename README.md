@@ -277,6 +277,8 @@ filetype plugin indent on
 
 ## 安装插件
 
+Codecs33
+
 ConvetToUTF8
 
 MarkdownEditing
@@ -428,15 +430,27 @@ node_modules
 .gitignore
 
 ```
-## 配置git alias 和log 的输出格式
+## 配置git alias 和log 的输出格式以及密码保存
 ```
 git config --global alias.co checkout
 git config --global alias.ci commit
-git config --global alias.lg log
 git config --global alias.st status
+git config --global alias.rt remote
+git config --global alias.br branch
+git config --global alias.lg  \"log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative\"
+
+git config --global alias = config  --get-regexp 'alias.*'
+
 git config --global user.name rainplus
 git config --global user.email rainplus@foxmail.com
-git config --global alias.log  \"log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative\"
+#配置保存密码
+git config --global credential.helper store
+#配置编码
+git config --global core.quotepath false          # 显示 status 编码
+git config --global gui.encoding utf-8            # 图形界面编码
+git config --global i18n.commit.encoding utf-8    # 提交信息编码
+git config --global i18n.logoutputencoding utf-8  # 输出 log 编码
+echo 'export LESSCHARSET=utf-8'>>~/.zshrc
 ```
 # Java 不同版本环境的配置
 
@@ -456,4 +470,10 @@ jenv enable-plugin export #导出 $JAVA_HOME
 ```sh
 mkdir -p $HOME/Codes/XX-Net
 git clone https://github.com/XX-net/XX-Net.git $HOME/Codes/XX-Net
+echo "alias pc='proxychains4'">>$HOME/.zshrc
+```
+## prxoychains4的配置 $HOME/.proxychains/proxychains.conf
+```
+[ProxyList]
+socks5	127.0.0.1	1080
 ```
