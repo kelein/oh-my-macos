@@ -1,0 +1,48 @@
+# default.custon.yaml
+
+patch: 
+  us_keyboard_layout: true                 # 键盘选项：应用美式键盘布局
+  schema_list: 
+    - schema: wubi_pinyin     # 五笔拼音
+  menu:
+    page_size: 9
+  style:
+    inline_preedit: false              # 关闭内嵌编码，这样就可以显示首行的拼音
+    corner_radius: 10                  # 窗口圆角半径
+    border_height: 0                   # 窗口边界高度，大于圆角半径才有效果
+    border_width: 0                    # 窗口边界宽度，大于圆角半径才有效果
+    line_spacing: 1                    # 候选词的行间距
+    spacing: 2                         # 在非内嵌编码模式下，预编辑和候选词之间的间距
+    font_face: "Hack Regular"   # 字体名称
+    font_point: 9
+    color_scheme: solarized_rock                 # 选择配色方案
+    horizontal: true                   # 候选窗横向显
+  switcher:
+    abbreviate_options: true
+    caption: 
+    fold_options: true
+    hotkeys: 
+    option_list_separator: "／"
+    save_options:
+      - full_shape
+      - ascii_punct
+      - simplification
+      - extended_charset
+  switches:                   # 注意縮進
+    - name: ascii_mode
+      reset: 0                # reset 0 的作用是當從其他輸入方案切換到本方案時，
+      states: [ 西文, 中文 ]  # 重設爲指定的狀態，而不保留在前一個方案中設定的狀態。
+    - name: full_shape        # 選擇輸入方案後通常需要立即輸入中文，故重設 ascii_mode = 0；
+      states: [ 半角, 全角 ]  # 而全／半角則可沿用之前方案中的用法。
+    - name: simplification
+      reset: 1                # 增加這一行：默認啓用「繁→簡」轉換。
+      states: [ 漢字, 汉字 ] 
+# 状态通知，适当，也可设为全开（always）全关（never）
+  show_notifications_when: appropriate
+  ascii_composer/good_old_caps_lock: true
+  ascii_composer/switch_key:
+    Caps_Lock: noop
+    Shift_L: commit_code
+    Shift_R: noop
+    Control_L: noop
+    Control_R: noop

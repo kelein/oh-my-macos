@@ -9,7 +9,7 @@
 
 ```sh
 echo 'export PATH="/usr/local/bin:$PATH"'>>~/.bashrc
-source .bashrc
+source ~/.bashrc
 
 ```
 
@@ -19,14 +19,11 @@ source .bashrc
 
 ```sh
 
-cd "$(brew --repo)" 
-git remote set-url origin https://mirrors.ustc.edu.cn/brew.git 
+cd "$(brew --repo)" && git remote set-url origin https://mirrors.ustc.edu.cn/brew.git 
 
-cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core" 
-git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git 
+cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core" && git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git 
 
 echo "export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles" >>$HOME/.bashrc
-
 
 brew update 
 ```
@@ -34,12 +31,10 @@ brew update
 ### [使用原始源](brew/brew_origin.sh)
 ```sh
 
-cd "$(brew --repo)" 
-git remote set-url origin https://github.com/Homebrew/brew.git
+cd "$(brew --repo)" && git remote set-url origin https://github.com/Homebrew/brew.git
 
+cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core" && git remote set-url origin https://github.com/Homebrew/homebrew-core.git 
 
-cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core" 
-git remote set-url origin https://github.com/Homebrew/homebrew-core.git 
 ```
 
 ## [命令程序](brew/brew_install.sh)
@@ -451,6 +446,9 @@ git config --global gui.encoding utf-8            # 图形界面编码
 git config --global i18n.commit.encoding utf-8    # 提交信息编码
 git config --global i18n.logoutputencoding utf-8  # 输出 log 编码
 echo 'export LESSCHARSET=utf-8'>>~/.zshrc
+
+# 设置全局忽略文件
+git config --global core.excludesfile ~/.gitignore_global
 ```
 # Java 不同版本环境的配置
 
@@ -476,4 +474,55 @@ echo "alias pc='proxychains4'">>$HOME/.zshrc
 ```
 [ProxyList]
 socks5	127.0.0.1	1080
+```
+
+# 配置maven
+
+## settings.xml.aliyun
+```xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+  <mirrors>
+        <mirror>
+            <id>nexus-aliyun</id>
+            <mirrorOf>*</mirrorOf>
+            <name>Nexus aliyun</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+        </mirror> 
+  </mirrors>
+
+</settings>
+
+```
+
+## 配置动态切换mirror脚本
+```sh
+#!/bin/bash
+PS3='Please enter your choice: '
+options=("settings.xml.aliyun" "settings.xml.work" "quit")
+select opt in "${options[@]}"
+do
+  case $opt in
+  "settings.xml.aliyun")
+  ln -sf $opt settings.xml
+  echo "change to $opt"
+  break
+  ;;
+  "settings-work")
+  ln -sf $opt settings.xml
+  echo "change to $opt"
+  break
+  ;;
+  "quit")
+  break
+  ;;
+  *) echo invalid option;;
+  esac
+done
+
 ```
