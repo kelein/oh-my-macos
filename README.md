@@ -435,7 +435,7 @@ git config --global alias.br branch
 git config --global alias.lg  \"log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative\"
 
 git config --global alias = config  --get-regexp 'alias.*'
-
+git config --global color.ui true
 git config --global user.name rainplus
 git config --global user.email rainplus@foxmail.com
 #配置保存密码

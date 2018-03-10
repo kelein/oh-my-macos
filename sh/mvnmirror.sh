@@ -1,15 +1,19 @@
 #!/bin/bash
+
 PS3='Please enter your choice: '
-options=("settings.xml.aliyun" "settings.xml.work" "quit")
+options=($(ls $HOME/.m2|grep 'settings.xml.') "quit")
 select opt in "${options[@]}"
 do
 	case $opt in
 	"quit")
 	break
 	;;
-	*) 
-	ln -sf $opt settings.xml
-	echo "change to $opt"
+	*)
+		if [ ! -z "$opt"  ]
+		then
+			ln -sf "$HOME/.m2/${opt}" "$HOME/.m2/settings.xml"
+			echo "change to $opt"
+		fi
 	break
 	;;
 	esac

@@ -1,0 +1,128 @@
+# https://scomper.me/gtd/-shu-xu-guan-de-diao-jiao-bi-ji
+# http://placeless.net/2016/08/24/my-rime-squirrel-config.html
+
+# 适用于【鼠须管】0.9.13+
+# 位置：~/Library/Rime/squirrel.custom.yaml
+# 用法：想要哪项生效，就删去该行行首的 "#" 字符，但注意保留用于缩进的空格
+
+patch:
+  show_notifications_via_notification_center: false
+  # 键盘选项：应用美式键盘布局
+  us_keyboard_layout: true
+  # 状态通知，适当，也可设为全开（always）全关（never）
+  show_notifications_when: appropriate
+
+  # 外观配置
+  style:
+    # 选择配色方案
+    color_scheme: mx
+    # 候选条横向显示
+    horizontal: false
+    # 启用内嵌编码模式，候选条首行不显示拼音
+    inline_preedit: true
+    # 候选条圆角半径
+    corner_radius: 6
+    # 窗口边界高度，大于圆角半径才生效
+    border_height: 0
+    # 窗口边界宽度，大于圆角半径才生效
+    border_width: 12
+    # 候选词的行间距
+    line_spacing: 5
+    # 在非内嵌编码模式下，预编辑和候选词之间的间距
+    spacing: 10
+    # 预选栏文字字体名称
+    font_face: "PingFangSC-Light"
+    # 预选栏文字字号
+    font_point: 16
+    # 候选词编号字体
+    label_font_face: "PingFangSC-Light"
+    # 预选栏编号字号
+    label_font_point: 14
+    # 用 1/6 em 空格 U+2005 来控制编号 %c 和候选词 %@ 前后的空间。
+    candidate_format: "%c\u2005%@\u2005"
+  # 自定义配色方案
+  preset_color_schemes:
+    mx:
+      name: "Minimal"
+      author: "Roy Shaw <cuzval@gmail.com>"
+      # 候选条背景色
+      back_color: 0xFFFFFF
+      # 边框色
+      border_color: 0xE0B693
+      # 拼音行文字颜色，24位色值，16进制，BGR顺序
+      text_color: 0x000000
+      # 拼音等提示文字颜色
+      comment_text_color: 0x999999
+      # 预选项文字颜色
+      candidate_text_color: 0x000000
+      # 高亮拼音 (需要开启内嵌编码)
+      hilited_text_color: 0xFF6941
+      # 第一候选项文字颜色
+      hilited_candidate_text_color: 0xFFFFFF
+      # 第一候选项背景背景色
+      hilited_candidate_back_color: 0xFF6941
+      # 第一候选项编号颜色
+      hilited_candidate_label_color: 0xFF6941
+      # 注解文字高亮
+      hilited_comment_text_color: 0xFF6941
+    # 方案一 horizontal: false
+    placeless:
+      name: "秋田／Placeless"
+      author: "jed <placeless@outlook.com>"
+      back_color: 0xFFFFFF #背景
+      text_color: 0xFFFFFF # 编码行文字颜色，24位色值，用十六进制书写方便些，顺序是蓝绿红0xBBGGRR
+      candidate_text_color: 0x000000 #非第一候选项
+      hilited_candidate_back_color: 0xf57c75 #第一候选项背景
+      hilited_candidate_text_color: 0xFFFFFF #第一候选项
+    # 方案二 horizontal: true
+    placeless2:
+      name: "荷田／Placeless"
+      author: "jed <placeless@outlook.com>"
+      back_color: 0xFFFFFF #背景
+      text_color: 0x000000 # 编码行文字颜色，24位色值，用十六进制书写方便些，顺序是蓝绿红0xBBGGRR
+      candidate_text_color: 0x666666 #非第一候选项
+      hilited_candidate_back_color: 0xFFFFFF #第一候选项背景
+      hilited_candidate_text_color: 0xf57c75 #第一候选项
+  app_options:
+    com.apple.dt.Xcode:
+      ascii_mode: true
+    com.runningwithcrayons.Alfred-3:
+      ascii_mode: true
+    com.apple.Terminal:
+      ascii_mode: true
+    com.googlecode.iterm2:
+      ascii_mode: true
+    com.apple.finder:
+      ascii_mode: true
+    com.sublimetext.2:
+      ascii_mode: true
+    com.sublimetext.3:
+      ascii_mode: true
+    com.github.atom:
+      ascii_mode: true
+    com.apple.appstore:
+      ascii_mode: true
+    com.apple.calculator:
+      ascii_mode: true
+    com.apple.iBooksX:
+      ascii_mode: true
+    com.apple.iTunes:
+      ascii_mode: true
+    com.apple.launchpad.launcher:
+      ascii_mode: true
+    com.apple.systempreferences:
+      ascii_mode: true
+    com.apple.keychainaccess:
+      ascii_mode: true
+    com.apple.Safari:
+      ascii_mode: true
+    com.apple.Spotlight:
+      ascii_mode: true
+    com.agilebits.onepassword4:
+      ascii_mode: true
+    com.runningwithcrayons.Alfred-3:
+      ascii_mode: true
+    com.kapeli.dashdoc:
+      ascii_mode: true
+    com.google.Chrome:
+      ascii_mode: true
