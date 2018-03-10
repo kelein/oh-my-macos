@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+	<!-- 推荐修自己喜欢的本地仓库路径-->
+	<!-- <localRepository>D:\Repos</localRepository> -->
+	<pluginGroups/>
+	<proxies/>
+	<servers>
+        <server>
+            <id>nexus</id>
+            <username>deployment</username>
+            <password>youboy.com</password>
+        </server>
+
+        <!--2017-7-27 修改使用deployment 账号进行管理-->
+        <!-- 部暑第3方包 2017年7月27日前 公司原有旧项目是发 thirdparty 仓库 -->
+		<server>
+			<id>thirdparty</id>
+			<username>deployment</username>
+			<password>youboy.com</password>
+		</server>
+        <server>
+			<id>thirdparty-release</id>
+			<username>deployment</username>
+			<password>youboy.com</password>
+		</server>
+        <!-- 2017-7-27 后 公司内部项目 软件 快照版本（snapshot）部署到youboy-snapshot 仓库 -->
+        <server>
+            <id>youboy-snapshot</id>
+            <username>deployment</username>
+            <password>youboy.com</password>
+        </server>
+        <!-- 2017-7-27 后 公司内部项目 软件 正式版本（release）部署到youboy-release 仓库 -->
+		<server>
+			<id>youboy-releases</id>
+			<username>deployment</username>
+			<password>youboy.com</password>
+		</server>
+	</servers>
+
+
+	<mirrors>
+        <!--统一配置 公司内部192.168.5.180 上的nexus负责下载jar包-->
+		<mirror>
+			<id>youboy</id>
+			<mirrorOf>*</mirrorOf>
+			<url>http://192.168.5.180:8081/nexus/content/groups/public</url>
+		</mirror>
+	</mirrors>
+
+	<profiles>
+		<profile>
+			<id>jdk-1.7</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<jdk>1.7</jdk>
+			</activation>
+			<properties>
+				<maven.compiler.source>1.7</maven.compiler.source>
+				<maven.compiler.target>1.7</maven.compiler.target>
+				<maven.compiler.compilerVersion>1.7</maven.compiler.compilerVersion>
+			</properties>
+		</profile>
+	</profiles>
+
+</settings>
