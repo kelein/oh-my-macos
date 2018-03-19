@@ -56,6 +56,11 @@ brew isntall node
 brew install lrzsz
 brew install ctags
 brew isntall jenv # java 版本管理工具
+brew install expect
+brew isntall pyenv
+brew isntall pyenv-vitrualenv
+brew install nmap
+
 
 ```
 
@@ -572,3 +577,33 @@ ln -s $(brew --cellar python)/* $PYENV_ROOT/versions/
 在/private/etc/hosts文件中添加
 
 127.0.0.1	[hostname].local 
+
+# 配置远离xshell/securecrt
+
+```
+cat << EOF > $HOME/.ssh/config
+ControlMaster auto
+ControlPersist yes
+ControlPath ~/.ssh/control:%h:%p:%r
+ServerAliveInterval 30
+EOF
+```
+
+## ssh登录的问题
+
+前提安装 expect
+expect脚本 参数为 端口 用户 地址 密码
+
+```
+#!/usr/bin/expect
+
+set timeout 30
+spawn ssh -p [lindex $argv 0] [lindex $argv 1]@[lindex $argv 2]
+expect {
+        "(yes/no)?"
+        {send "yes\n";exp_continue}
+        "password:"
+        {send "[lindex $argv 3]\n"}
+}
+interact
+```
