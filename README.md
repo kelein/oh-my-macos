@@ -526,7 +526,27 @@ do
   *) echo invalid option;;
   esac
 done
+```
+## python 环境的配置
 
+```
+brew install python
+brew install pyenv
+brew instal pyenv-vituralenv
+```
+在$HOME/.zshr中添加如下的内容(顺序一定不能变)：
+```
+export PYENV_ROOT="$HOME/.pyenv"
+eval "$(pyenv init -)"
+eval "$(jenv init -)"
+
+if which pyenv > /dev/null; then eval "$(pyenv init -)";fi
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+```
+
+<<<<<<< HEAD
+把brew安装的python也添加到pyenv进行管理
+=======
 # python 环境的配置
 ```
 ```
@@ -547,4 +567,12 @@ if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -
 把brew安装的python也添加到pyenv进行管理
 ```
 ln -s $(brew --cellar python)/* $PYENV_ROOT/versions/
+>>>>>>> eb1b725f5831f4b46299a5d129876637c5a2745a
 ```
+ln -s $(brew --cellar python)/* $PYENV_ROOT/versions/
+```
+## 修改一个macbook下idea卡顿的问题
+
+在/private/etc/hosts文件中添加
+
+127.0.0.1	[hostname].local 
