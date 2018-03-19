@@ -526,9 +526,9 @@ do
   *) echo invalid option;;
   esac
 done
-
-# python 环境的配置
 ```
+## python 环境的配置
+
 ```
 brew install python
 brew install pyenv
@@ -548,3 +548,8 @@ if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -
 ```
 ln -s $(brew --cellar python)/* $PYENV_ROOT/versions/
 ```
+## 修改一个macbook下idea卡顿的问题
+
+在/private/etc/hosts文件中添加
+
+127.0.0.1	[hostname].local 
