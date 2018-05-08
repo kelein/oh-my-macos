@@ -80,6 +80,9 @@ brew cask install mysqlworkbench
 brew cask install squirrel
 brew cask install intellij-idea
 brew cask install pycharm
+brew cask install macdown
+brew cask install marp
+brew cask install atom
 # brew cask install dropbox
 brew cask install cheatsheet
 # brew cask install onepassword
